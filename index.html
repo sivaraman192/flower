@@ -123,75 +123,42 @@
 
 <script>
   const products = [
-    { 
-      id: 1, 
-      name: "Red Roses Bouquet", 
-      price: 25, 
+    {
+      id: 1,
+      name: "Red Roses Bouquet",
+      price: 25,
       image: "photo.jpg", // Relative path to the image
-      description: "A beautiful bouquet of fresh red roses." 
+      description: "A beautiful bouquet of fresh red roses.",
     },
-    { 
-      id: 2, 
-      name: "Rose and Nanthiyavattai Garland", 
-      price: 35, 
+    {
+      id: 2,
+      name: "Rose and Nanthiyavattai Garland",
+      price: 35,
       image: "jyothika malai.jpg", // Relative path to the image
-      description: "A lovely combination of roses and nanthiyavattai flowers." 
+      description: "A lovely combination of roses and nanthiyavattai flowers.",
     },
-    { 
-      id: 2, 
-      name: "Rose and Nanthiyavattai Garland", 
-      price: 35, 
+    {
+      id: 3,
+      name: "White Rose and Nanthiyavattai Garland",
+      price: 35,
       image: "white rose and nanthiyavattai.jpg", // Relative path to the image
-      description: "A lovely combination of roses and nanthiyavattai flowers." 
-    },
-    { 
-      id: 2, 
-      name: "Rose and Nanthiyavattai Garland", 
-      price: 35, 
-      image: "rose with Nanthiyavattai wedding.jpg", // Relative path to the image
-      description: "A lovely combination of roses and nanthiyavattai flowers." 
-    },
-    { 
-      id: 2, 
-      name: "Rose and Nanthiyavattai Garland", 
-      price: 35, 
-      image: "chololate(3 feet).jpg", // Relative path to the image
-      description: "A lovely combination of roses and nanthiyavattai flowers." 
-    },
-    { 
-      id: 2, 
-      name: "Rose and Nanthiyavattai Garland", 
-      price: 35, 
-      image: "nuts(munthiri).jpg", // Relative path to the image
-      description: "A lovely combination of roses and nanthiyavattai flowers." 
-    },
-    { 
-      id: 2, 
-      name: "Rose and Nanthiyavattai Garland", 
-      price: 35, 
-      image: "WhatsApp Image 2024-11-08 at 23.26.44_7d940902.jpg", // Relative path to the image
-      description: "A lovely combination of roses and nanthiyavattai flowers." 
-    },
-    { 
-      id: 2, 
-      name: "Rose and Nanthiyavattai Garland", 
-      price: 35, 
-      image: "Screenshot 2024-11-09 001415.png", // Relative path to the image
-      description: "A lovely combination of roses and nanthiyavattai flowers." 
+      description: "A combination of white roses and nanthiyavattai flowers.",
     },
   ];
 
   const ownerWhatsAppNumber = "919342913781";
 
   function addToCartAndMessage(productId) {
-    const product = products.find(p => p.id === productId);
-    const message = `Hello, I would like to purchase the following product: %0A%0A*Product Name*: ${product.name}%0A*Price*: $${product.price}%0A*Description*: ${product.description}%0A%0AIs it available?`;
+    const product = products.find((p) => p.id === productId);
+    const imageUrl = window.location.origin + "/" + product.image; // Full URL of the image
+    const message = `Hello, I would like to purchase the following product: %0A%0A*Product Name*: ${product.name}%0A*Price*: $${product.price}%0A*Description*: ${product.description}%0A%0A*Image*: ${imageUrl}%0A%0AIs it available?`;
+
     window.open(`https://wa.me/${ownerWhatsAppNumber}?text=${message}`, "_blank");
   }
 
   function loadProducts() {
     const productList = document.getElementById("product-list");
-    products.forEach(product => {
+    products.forEach((product) => {
       const productCard = document.createElement("div");
       productCard.className = "product";
       productCard.innerHTML = `
